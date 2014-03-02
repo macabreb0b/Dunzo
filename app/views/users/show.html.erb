@@ -1,0 +1,32 @@
+
+
+<h2>Open Projects:</h2>
+<% @user.open_projects.each do |project| %>
+  <div>
+    <%= link_to project.name, project_url(project) %> for <%= project.client %>
+  </div>
+<% end %>
+
+<br>
+<%= link_to "Add New Project", new_project_url, class: 'subtle' %>
+<br><br>
+
+<h2>Closed Projects:</h2>
+<% @user.closed_projects.each do |project| %>
+  <div>
+    <%= link_to project.name, project_url(project) %> for <%= project.client %>
+  </div>
+<% end %>
+
+<br>
+<br>
+
+<h2>Clients:</h2>
+<% @user.clients.each do |client| %>
+  <div>
+    <%= link_to client, client_url(client) %>
+    <%= link_to "Add Project", new_client_project_url(client) %>
+  </div>
+<% end %>
+<br>
+<%= link_to "Add New Client", new_client_url, class: 'subtle' %>

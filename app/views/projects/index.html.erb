@@ -1,0 +1,4 @@
+Projects for: <%= link_to @client.name, client_url(@client) %>
+<% @projects.each do |project| %>
+  <div><%= project.name %></div>
+<% end %>

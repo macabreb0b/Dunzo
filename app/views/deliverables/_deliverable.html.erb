@@ -1,0 +1,41 @@
+<% disabled = deliverable.completed ? 'disabled' : nil %>
+
+<div class="deliverable">
+  <p><%= deliverable.name %></p>
+  <div>
+    <form action="<%= remove_hour_deliverable_url(deliverable) %>" method="POST">
+      <input
+        type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+      <button
+        <%= disabled %>
+        class="btn <%= deliverable.completed ? 'completed' : 'remove-hour' %>">-</button>
+    </form>
+
+    <span class="subtle"><%= deliverable.hour_count %> hours</span>
+
+    <form action="<%= add_hour_deliverable_url(deliverable) %>" method="POST">
+      <input
+        type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+      <button
+        <%= disabled %>
+        class="btn <%= deliverable.completed ? 'completed' : 'add-hour' %>">+</button>
+    </form>
+
+  </div>
+  <%= link_to "Notes", deliverable_url(deliverable) %>
+  <%= render 'deliverables/completed_btn', deliverable: deliverable %>
+
+  <%= render 'deliverables/remove_btn', deliverable: deliverable %>
+  <br>
+  <%= render 'deliverables/deliverable_form', parent_id: deliverable.id %>
+</div>
+
+<% deliverable.children.order(:created_at).each do |child_deliverable| %>
+  <blockquote>
+    <%= render 'deliverables/deliverable', deliverable: child_deliverable %>
+  </blockquote>
+<% end %>

@@ -1,0 +1,16 @@
+<form action="<%= complete_deliverable_url(deliverable) %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <button
+    id="checkmark <%= deliverable.id %>"
+    class="btn <%= deliverable.completed ? 'complete' : 'incomplete' %>">
+    &#10003;
+  </button>
+
+  <label
+    for="checkmark <%= deliverable.id %>"
+    class="subtle">
+    <%= deliverable.completed ? 'completed' : 'not completed' %>
+  </label>
+
+</form>

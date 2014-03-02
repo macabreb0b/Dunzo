@@ -1,0 +1,5 @@
+<% @clients.each do |client| %>
+<div><%= client.name %> <%= link_to "New Project", new_client_project_url(client) %></div>
+<% end %>
+
+<%= link_to "Add Client", new_client_url %>

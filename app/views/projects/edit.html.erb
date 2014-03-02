@@ -1,0 +1,39 @@
+<form action="<%= project_url(@project) %>" method="POST" accept-charset="utf-8">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <input
+    type="hidden"
+    name="_method"
+    value="PATCH">
+
+  <label>New project for:
+    <select name="project[client_id]">
+      <option value="">~select client~</option>
+      <%= current_user.clients.each do |client| %>
+      <option
+        value="<%= client.id %>"
+        <%= 'selected' if @project.client_id == client.id %>>
+        <%= client %>
+      </option>
+      <% end %>
+    </select>
+  </label>
+
+  <br>
+  <label>Name:
+    <input type="text" name="project[name]" value="<%= @project.name %>">
+  </label>
+  <br>
+  <label>Description:
+    <input type="text" name="project[description]" value="<%= @project.description %>">
+  </label>
+  <br>
+  <label>Deliver by:
+    <input type="date" name="project[due_date]" value="">
+  </input>
+  <br>
+  <button class="btn">Update Project</button>
+</form>

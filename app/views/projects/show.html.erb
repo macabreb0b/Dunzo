@@ -1,0 +1,36 @@
+<% message = @project.open ? "close it!" : "re-open it!" %>
+<% css_class = @project.open ? "complete subtle" : "subtle incomplete" %>
+
+<h1><%= @project.name %></h1>
+
+<h2>Status: <%= @project.open ? 'OPEN' : 'CLOSED' %>
+  <%= link_to message,
+    change_status_project_url(@project),
+    class: css_class,
+    method: :post %>
+</h2>
+
+<h2>For: <%= link_to @project.client, client_url(@project.client)%></h2>
+
+<h2>Uninvoiced hours: <%= @project.uninvoiced_hours %>
+  <small><%= link_to "send invoice", "#", class: 'subtle' %></small>
+</h2>
+
+<h2>Invoiced hours: <%= @project.invoiced_hours %></h2>
+
+<h2>Description:</h2>
+
+<p><%= @project.description %></p>
+
+<%= link_to "Back to All Projects", user_url(current_user), class: 'subtle' %>
+<%= link_to "Back to Client Projects", client_url(@project.client), class: 'subtle' %>
+<%= link_to "Edit Project", edit_project_url(@project), class: 'subtle' %>
+
+<h2>Deliverables:</h2>
+<%= render 'deliverables/deliverable_form', parent_id: nil %>
+
+<blockquote>
+  <% @top_level_deliverables.order(:created_at).each do |deliverable| %>
+    <%= render 'deliverables/deliverable', deliverable: deliverable %>
+  <% end %>
+</blockquote>

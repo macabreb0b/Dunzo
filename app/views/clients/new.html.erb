@@ -1,0 +1,21 @@
+<form action="<%= clients_url %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Name:
+    <input type="text" value="<%= @client.name %>" name="client[name]">
+  </label>
+
+  <label>Company:
+    <input type="text" value="<%= @client.company %>" name="client[company]">
+  </label>
+
+  <label>Phone:
+    <input type="text" value="<%= @client.phone %>" name="client[phone]">
+  </label>
+
+  <label>Email:
+    <input type="text" value="<%= @client.email %>" name="client[email]">
+  </label>
+
+  <button>Add Client</button>
+</form>

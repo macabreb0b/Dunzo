@@ -1,0 +1,23 @@
+
+<div class="<%= parent_id.nil? ? 'add-project-deliverable' : 'add-subdeliverable' %>">
+  <form action="<%= project_deliverables_url(@project) %>" method="POST">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+
+    <input
+      type="hidden"
+      name="deliverable[parent_deliverable_id]"
+      value="<%= parent_id %>">
+
+    <button
+      class="subtle">
+      add <%= parent_id.nil? ? 'deliverable' : 'subdeliverable' %>
+    </button>
+
+    <input
+      type="text"
+      name="deliverable[name]">
+  </form>
+</div>

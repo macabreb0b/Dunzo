@@ -1,0 +1,21 @@
+<form action="<%= deliverable_url(@deliverable) %>" method="POST">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <input
+    type="hidden"
+    name="_method"
+    value="PATCH">
+
+  <label>Deliverable Description:<br>
+    <textarea type="text" name="deliverable[name]"><%= @deliverable.name %></textarea>
+  </label><br>
+
+  <label>Hourly:<br>
+    $<input type="number" name="deliverable[hourly]" value="<%= @deliverable.hourly %>">
+  </label>
+
+  <button class="btn">Update Deliverable</button>
+</form>

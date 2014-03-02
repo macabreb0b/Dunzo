@@ -1,0 +1,6 @@
+<%= @client.name %>
+<% @client.projects.each do |project| %>
+<%= link_to project.name, project_url(project) %>
+<% end %>
+<%= link_to "New Project", new_client_project_url(@client) %>
+<%= button_to "Remove Client", client_url(@client), method: :delete %>
