@@ -12,6 +12,18 @@
  *= require_tree .
  */
 
+html {
+  font-family: arial, sans-serif;
+}
+
+.deliverable-name {
+  background: SkyBlue;
+  border: 0;
+  border-radius: 3px;
+  padding: 5px 8px;
+  margin-bottom: 5px;
+}
+
 .btn {
   color: white;
   background: #333;
@@ -36,8 +48,27 @@
   background: Red;
 }
 
+.deliverable {
+  border: thin solid LightBlue;
+  border-radius: 2px;
+  padding: 10px;
+  margin: 3px;
+}
+
 .deliverable * {
   display: inline-block;
+}
+
+.sub-form {
+  display: none;
+}
+
+.notes {
+  background: LightBlue;
+}
+
+.show-form {
+  background: Tomato;
 }
 
 #session {
@@ -61,4 +92,13 @@
   display: inline;
   font-weight: normal;
   font: -webkit-small-control;
+}
+
+blockquote {
+  border-left: thin dotted blue;
+  background: url("arrow.png") no-repeat -7px -3px;
+  position: inherit;
+  z-index: 99999999;
+  margin: 0 0 0 30px;
+  padding-left: 20px;
 }

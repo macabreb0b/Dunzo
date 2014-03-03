@@ -1,9 +1,15 @@
 <% disabled = @deliverable.completed ? 'disabled' : nil %>
 
 
-<h2><%= @deliverable.name %> <small>in <%= link_to @deliverable.project.name %> for <%= @deliverable.project.client %></small></h2>
+
 
 <div class="deliverable">
+  <h2>
+    <%= @deliverable.name %>
+    <small>in <%= link_to @deliverable.project.name %> for <%= @deliverable.project.client %>
+    </small>
+  </h2><br>
+
   <div>
     <form action="<%= remove_hour_deliverable_url(@deliverable) %>" method="POST">
       <input
@@ -30,6 +36,7 @@
     </form>
 
   </div>
+  &nbsp;
   <%= render 'deliverables/completed_btn', deliverable: @deliverable %>
 
   <%= render 'deliverables/remove_btn', deliverable: @deliverable %>
@@ -61,6 +68,8 @@
 <div><%= render 'deliverable_form', parent_id: @deliverable.id %>
 
 <% @deliverable.children.each do |child| %>
-  <%= render 'deliverable', deliverable: child %>
+  <blockquote>
+    <%= render 'deliverable', deliverable: child %>
+  </blockquote>
 <% end %>
 </div>

@@ -1,0 +1,28 @@
+<% disabled = deliverable.completed ? 'disabled' : nil %>
+
+
+<div>
+  <form action="<%= remove_hour_deliverable_url(deliverable) %>" method="POST">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+    <button
+      <%= disabled %>
+      class="btn <%= deliverable.completed ? 'completed' : 'remove-hour' %>">-</button>
+  </form>
+
+  <span class="subtle"><%= deliverable.hour_count %> hours</span>
+
+  <form action="<%= add_hour_deliverable_url(deliverable) %>" method="POST">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+    <button
+      <%= disabled %>
+      class="btn <%= deliverable.completed ? 'completed' : 'add-hour' %>">+</button>
+  </form>
+
+</div>
+&nbsp;

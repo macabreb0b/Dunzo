@@ -1,5 +1,5 @@
 
-<div class="<%= parent_id.nil? ? 'add-project-deliverable' : 'add-subdeliverable' %>">
+<div class="<%= parent_id.nil? ? 'add-project-deliverable' : "add-subdeliverable sub-form _#{parent_id}" %>">
   <form action="<%= project_deliverables_url(@project) %>" method="POST">
     <input
       type="hidden"

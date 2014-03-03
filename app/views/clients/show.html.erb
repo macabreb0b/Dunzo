@@ -3,4 +3,8 @@
 <%= link_to project.name, project_url(project) %>
 <% end %>
 <%= link_to "New Project", new_client_project_url(@client) %>
-<%= button_to "Remove Client", client_url(@client), method: :delete %>
+<%= button_to "Remove Client",
+      client_url(@client),
+      method: :delete,
+      data: { confirm: "This will delete #{@client.name} (and all of their associated projects) permanently." },
+      class: 'btn remove' %>

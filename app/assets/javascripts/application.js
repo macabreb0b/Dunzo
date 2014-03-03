@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready( function() {
+  $('.show-form').click(function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $('.sub-form.' + id ).toggle("slide");
+  });
+});

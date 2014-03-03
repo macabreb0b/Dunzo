@@ -19,6 +19,7 @@ class Project < ActiveRecord::Base
 
   has_many :deliverables, dependent: :destroy, inverse_of: :project
   has_many :hours, through: :deliverables
+
   has_many :notes,
     primary_key: :id,
     foreign_key: :notable_id,

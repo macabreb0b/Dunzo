@@ -23,6 +23,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    project = Project.find(params[:id])
+    client = project.client
+    project.destroy
+    redirect_to client_url(client)
+  end
+
   def show
     @project = Project.find(params[:id])
     @top_level_deliverables =
@@ -46,6 +53,17 @@ class ProjectsController < ApplicationController
     @client = Client.find(params[:client_id])
     @projects = @client.projects
     render :index
+  end
+
+  def update
+    @project = Project.find(params[:id])
+
+    if @project.update_attributes(project_params)
+      redirect_to project_url(@project)
+    else
+      flash[:errors] = @project.errors.full_messages
+      render :edit
+    end
   end
 
   def project_params

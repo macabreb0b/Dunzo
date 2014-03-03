@@ -13,7 +13,7 @@ Projection::Application.routes.draw do
     resources :deliverables, only: [:index, :new, :create]
   end
 
-  get 'new_project', to: "projects#new"
+  get 'new_project', to: "projects#new" # for creating a project without selecting a client first
 
   resources :deliverables, except: [:index, :new, :create] do
     member do
