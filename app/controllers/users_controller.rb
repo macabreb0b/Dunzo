@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
     render :new
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    check_logged_in(@user)
     render :show
   end
 
@@ -29,7 +31,6 @@ class UsersController < ApplicationController
 
   def update
   end
-
 
   private
 

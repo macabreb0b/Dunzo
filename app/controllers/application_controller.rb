@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
     session[:token] = nil
   end
 
+  def check_logged_in(user)
+    if user.id != current_user.id
+      flash[:errors] = "You do not have permission to see that page."
+      redirect_to :back
+    end
+  end
 end

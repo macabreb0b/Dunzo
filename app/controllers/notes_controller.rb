@@ -11,6 +11,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
+
     @notable = @note.notable
     @note.destroy
     if @notable.class == Project
@@ -32,5 +33,12 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:body, :notable_id, :notable_type)
+  end
+
+  def check_logged_in_note
+    note = Note.find(params[:id])
+    user = note.notable.class.to_s == "Project" ?
+      note.notable.user : note.notable.project.user
+    check_logged_in(user)
   end
 end

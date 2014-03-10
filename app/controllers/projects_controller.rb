@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :check_clients_list, only: :new
+  before_action :check_logged_in_project, on: [:destroy, :show, :change_status, :edit, :update]
 
   def new
     if params[:client_id]
@@ -25,6 +26,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     project = Project.find(params[:id])
+
     client = project.client
     project.destroy
     redirect_to client_url(client)
@@ -32,6 +34,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+
     @top_level_deliverables =
       @project.deliverables.where(:parent_deliverable_id => nil)
     @notes = @project.notes.order(:created_at)
@@ -74,5 +77,11 @@ class ProjectsController < ApplicationController
 
   def check_clients_list
     redirect_to new_client_url if current_user.clients.empty?
+  end
+
+  def check_logged_in_project
+    project = Project.find(params[:id])
+    user = project.user
+    check_logged_in(user)
   end
 end
