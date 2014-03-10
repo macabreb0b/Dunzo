@@ -1,3 +1,5 @@
+<h1 class="big">Your Clients:</h1>
+
 <% @clients.each do |client| %>
 <div><%= client.name %> <%= link_to "New Project", new_client_project_url(client) %></div>
 <% end %>

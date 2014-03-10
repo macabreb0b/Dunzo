@@ -1,4 +1,7 @@
-<form action="<%= deliverable_url(deliverable) %>" method="POST">
+<% greyed_out = (deliverable.completed ? 'greyed-out' : nil) %>
+
+
+<form class="<%= greyed_out %>" action="<%= deliverable_url(deliverable) %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="DELETE">
 

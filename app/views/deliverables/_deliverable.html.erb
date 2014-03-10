@@ -1,6 +1,8 @@
+<% greyed_out = (deliverable.completed ? 'greyed-out' : nil) %>
+
 
 <div class="deliverable">
-  <div class="deliverable-name"><%= deliverable.name %></div>
+  <div class="deliverable-name <%= greyed_out %>"><%= deliverable.name %></div>
 
   <%= render 'deliverables/hours_btn', deliverable: deliverable %>
 

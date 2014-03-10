@@ -12,9 +12,27 @@
  *= require_tree .
  */
 
-html {
-  font-family: arial, sans-serif;
+html, body {
+  font-family: Arial, sans-serif; /*Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif;*/
+  margin: 0;
+  padding: 0;
+  background: SeaShell;
 }
+
+h1.big {
+  font-size: 6em;
+  font-weight: bold;
+  font-family: arial, sans-serif;
+  line-height: .8em;
+}
+
+#container {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 
 .deliverable-name {
   background: SkyBlue;
@@ -71,14 +89,6 @@ html {
   background: Tomato;
 }
 
-#session {
-/*  display: inline-block;*/
-}
-
-#session * {
-  display: inline;
-}
-
 .subtle {
   color: #333;
   background: LightGray;
@@ -86,7 +96,6 @@ html {
   border-radius: 3px;
   cursor: pointer;
   text-decoration: none;
-/*  font-family: sans-serif;*/
   margin: 2;
   padding: 2px 6px 3px 6px;
   display: inline;
@@ -101,4 +110,178 @@ blockquote {
   z-index: 99999999;
   margin: 0 0 0 30px;
   padding-left: 20px;
+}
+
+.greyed-out, .greyed-out * {
+  color: SeaShell;
+  background: #cecece;
+  border-radius: 3px;
+
+}
+
+/* NEW PROJECT + CLIENT FORM STYLES */
+.new-thing form {
+  display: block;
+  width: 100%;
+}
+
+.new-thing * {
+  font-size: 1em;
+}
+
+.new-thing label {
+  margin: 10px, 10px;
+  display: block;
+}
+
+.new-thing label input, .new-thing label select{
+  margin: 10px 0;
+  padding: 3px;
+  display: block;
+  height: 1em;
+  width: 100%;
+}
+
+.new-thing label textarea {
+  width: 100%;
+  height: 5em;
+  padding: 3px;
+  margin: 10px 0;
+  display: block;
+}
+
+/* SIGN UP + SIGN IN FORM STYLES */
+.users form, .users label, .users input {
+  display: block;
+  width: 100%;
+}
+
+.users label {
+  margin: 10px, 10px;
+  padding-bottom: 10px;
+}
+
+.users button,  {
+  color: OrangeRed;
+  text-decoration: none;
+  vertical-align: center;
+  border: 3px solid OrangeRed;
+  padding: 5px;
+  background: none;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+
+/* TOP BANNER STYLES */
+#banner {
+  background: OrangeRed;
+  color: white;
+  font-size: 2em;
+  padding: 5px 20px;
+}
+
+#banner * {
+  display: inline-block;
+}
+
+#banner input, #banner a {
+  color: white;
+  text-decoration: none;
+  vertical-align: center;
+  border: 3px solid white;
+  padding: 5px;
+  background: none;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+#banner .left {
+  float: left;
+  display: inline-block;
+  width: 50%;
+}
+
+#title {
+  vertical-align: center;
+  padding-top: 3px;
+}
+
+#banner .right{
+  text-align: right;
+  display: inline-block;
+  width: 50%;
+  font-size: 0.5em;
+}
+
+#banner .right * {
+  text-align: right;
+}
+
+
+/* NOTE STYLES */
+#notes ul {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#notes a {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+}
+
+#notes p {
+  hyphens: auto;
+  word-break: break-all;
+}
+
+#notes li {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  width: 180px;
+  height: 180px;
+  background: gold;
+  border: thin solid #ccc;
+  border-radius: 5px;
+  vertical-align: top;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+#show-note {
+  padding: 10px;
+  margin: 5px;
+  background: gold;
+  border: thin solid #ccc;
+  border-radius: 5px;
+  vertical-align: top;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+#new-note-form {
+  display: none;
+  padding: 10px;
+  margin: 5px;
+  background: gold;
+  border: thin solid #ccc;
+  border-radius: 5px;
+}
+
+#notes #new-note {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border: thin solid #ccc;
+  border-radius: 5px;
+  font-size: 5.5em;
+  text-align: center;
+  vertical-align: top;
+  color: white;
+  background: tomato;
 }

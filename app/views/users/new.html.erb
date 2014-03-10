@@ -1,17 +1,21 @@
-<form action="<%= users_url %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<h1 class="big">Start making progress:</h1>
 
-  <label>Username:
-    <input type="text" value="<%= @user.username %>" name="user[username]">
-  </label>
+<div class="users">
+  <form action="<%= users_url %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>Email:
-    <input type="text" value="<%= @user.email %>" name="user[email]">
-  </label>
+    <label>Username:
+      <input type="text" value="<%= @user.username %>" name="user[username]">
+    </label>
 
-  <label>Password:
-    <input type="password" name="user[password]">
-  </label>
+    <label>Email:
+      <input type="text" value="<%= @user.email %>" name="user[email]">
+    </label>
 
-  <button>Sign Up</button>
-</form>
+    <label>Password:
+      <input type="password" name="user[password]">
+    </label>
+
+    <button>Sign Up</button>
+  </form>
+</div>

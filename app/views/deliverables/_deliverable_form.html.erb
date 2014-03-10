@@ -13,7 +13,7 @@
 
     <button
       class="subtle">
-      add <%= parent_id.nil? ? 'deliverable' : 'subdeliverable' %>
+      <%= parent_id.nil? ? 'add deliverable' : '+' %>
     </button>
 
     <input

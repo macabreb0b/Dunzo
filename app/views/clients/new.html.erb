@@ -1,21 +1,25 @@
-<form action="<%= clients_url %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<h1 class="big">Add Client:</h1>
 
-  <label>Name:
-    <input type="text" value="<%= @client.name %>" name="client[name]">
-  </label>
+<div class="new-thing">
+  <form action="<%= clients_url %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>Company:
-    <input type="text" value="<%= @client.company %>" name="client[company]">
-  </label>
+    <label>Name:
+      <input type="text" value="<%= @client.name %>" name="client[name]">
+    </label>
 
-  <label>Phone:
-    <input type="text" value="<%= @client.phone %>" name="client[phone]">
-  </label>
+    <label>Company:
+      <input type="text" value="<%= @client.company %>" name="client[company]">
+    </label>
 
-  <label>Email:
-    <input type="text" value="<%= @client.email %>" name="client[email]">
-  </label>
+    <label>Phone:
+      <input type="text" value="<%= @client.phone %>" name="client[phone]">
+    </label>
 
-  <button>Add Client</button>
-</form>
+    <label>Email:
+      <input type="text" value="<%= @client.email %>" name="client[email]">
+    </label>
+
+    <button class="btn">Add Client</button>
+  </form>
+</div>

@@ -34,6 +34,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @top_level_deliverables =
       @project.deliverables.where(:parent_deliverable_id => nil)
+    @notes = @project.notes.order(:created_at)
+
     render :show
   end
 

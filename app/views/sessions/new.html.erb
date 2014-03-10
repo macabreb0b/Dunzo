@@ -1,13 +1,17 @@
-<form action="<%= session_url %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<h1 class="big">Get moving!</h1>
 
-  <label>Username:
-    <input type="text" value="<%= @user.username %>" name="user[username]">
-  </label>
+<div class="users">
+  <form action="<%= session_url %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>Password:
-    <input type="password" name="user[password]">
-  </label>
+    <label>Username:
+      <input type="text" value="<%= @user.username %>" name="user[username]">
+    </label>
 
-  <button>Sign In</button>
-</form>
+    <label>Password:
+      <input type="password" name="user[password]">
+    </label>
+
+    <button>Sign In</button>
+  </form>
+</div>

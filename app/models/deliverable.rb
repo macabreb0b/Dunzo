@@ -9,6 +9,7 @@
 #  updated_at            :datetime
 #  parent_deliverable_id :integer
 #  completed             :boolean
+#  hourly                :integer
 #
 
 class Deliverable < ActiveRecord::Base
@@ -32,7 +33,8 @@ class Deliverable < ActiveRecord::Base
   has_many :notes,
     primary_key: :id,
     foreign_key: :notable_id,
-    class_name: "Note"
+    class_name: "Note",
+    dependent: :destroy
 
   def hour_count
     self.hours.count

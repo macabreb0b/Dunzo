@@ -5,38 +5,13 @@
 
 <div class="deliverable">
   <h2>
-    <%= @deliverable.name %>
-    <small>in <%= link_to @deliverable.project.name %> for <%= @deliverable.project.client %>
+    <span class="deliverable-name"><%= @deliverable.name %></span>
+    <small>in <%= link_to @deliverable.project.name, project_url(@deliverable.project) %> for <%= link_to @deliverable.project.client, client_url(@deliverable.project.client) %>
     </small>
   </h2><br>
 
-  <div>
-    <form action="<%= remove_hour_deliverable_url(@deliverable) %>" method="POST">
-      <input
-        type="hidden"
-        name="authenticity_token"
-        value="<%= form_authenticity_token %>">
-      <button
-        <%= disabled %>
-        class="btn <%= @deliverable.completed ?
-          'completed' : 'remove-hour' %>">-</button>
-    </form>
+  <%= render 'deliverables/hours_btn', deliverable: @deliverable %>
 
-    <span class="subtle"><%= @deliverable.hour_count %> hours</span>
-
-    <form action="<%= add_hour_deliverable_url(@deliverable) %>" method="POST">
-      <input
-        type="hidden"
-        name="authenticity_token"
-        value="<%= form_authenticity_token %>">
-      <button
-        <%= disabled %>
-        class="btn <%= @deliverable.completed ?
-          'completed' : 'add-hour' %>">+</button>
-    </form>
-
-  </div>
-  &nbsp;
   <%= render 'deliverables/completed_btn', deliverable: @deliverable %>
 
   <%= render 'deliverables/remove_btn', deliverable: @deliverable %>
@@ -57,9 +32,21 @@
 <%= link_to "Edit deliverable", edit_deliverable_url(@deliverable), class: 'subtle' %>
 
 <h3>Notes:</h3>
-<% @deliverable.notes.each do |note| %>
-  <%= render 'notes/note', note: note %>
-<% end %>
+<div id="notes">
+  <ul>
+    <% @notes.each do |note| %>
+    <a href="<%= note_url(note) %>">
+      <li>
+        <p><%= "#{note.created_at.strftime('%x')}" %></p>
+        <p><%= note.body[0..150] + "..." %></p>
+      </li>
+    </a>
+    <% end %>
+  </ul>
+  <a href="#" id="new-note">+</a>
+
+  <%= render 'notes/new_note', notable_id: @deliverable.id, notable_type: @deliverable.class %>
+</div>
 
 
 
@@ -73,3 +60,13 @@
   </blockquote>
 <% end %>
 </div>
+
+
+<script>
+  $(function() {
+    $('#new-note').on('click', function(e) {
+      e.preventDefault();
+      $('#new-note-form').toggle('slide')
+    })
+  })
+</script>

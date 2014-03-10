@@ -13,7 +13,7 @@
 <h2>For: <%= link_to @project.client, client_url(@project.client)%></h2>
 
 <h2>Uninvoiced hours: <%= @project.uninvoiced_hours %>
-  <small><%= link_to "send invoice", "#", class: 'subtle' %></small>
+  <small><%= link_to "send invoice", "#", class: 'subtle' %> (TK)</small>
 </h2>
 
 <h2>Invoiced hours: <%= @project.invoiced_hours %></h2>
@@ -26,11 +26,61 @@
 <%= link_to "Back to Client Projects", client_url(@project.client), class: 'subtle' %>
 <%= link_to "Edit Project", edit_project_url(@project), class: 'subtle' %>
 
+
+<h2>Notes:</h2>
+<div id="notes">
+  <ul>
+    <% @notes.each do |note| %>
+    <a href="<%= note_url(note) %>">
+      <li>
+        <p><em><%= "#{note.created_at.strftime('%x')}" %></em></p>
+        <p><%= note.body[0..150] + "..." %></p>
+      </li>
+    </a>
+    <% end %>
+    <a href="#" id="new-note">+</a> <!-- this link reveals the new note form -->
+  </ul>
+
+
+  <%= render 'notes/new_note', notable_id: @project.id, notable_type: @project.class %>
+</div>
+
+
 <h2>Deliverables:</h2>
 <%= render 'deliverables/deliverable_form', parent_id: nil %>
 
-<blockquote>
-  <% @top_level_deliverables.order(:created_at).each do |deliverable| %>
-    <%= render 'deliverables/deliverable', deliverable: deliverable %>
-  <% end %>
-</blockquote>
+<div id="deliverables">
+  <blockquote>
+    <% @top_level_deliverables.order(:created_at).each do |deliverable| %>
+      <%= render 'deliverables/deliverable', deliverable: deliverable %>
+    <% end %>
+  </blockquote>
+</div>
+
+<script>
+  $(function() {
+    $('#new-note').on('click', function(e) {
+      e.preventDefault();
+      $('#new-note-form').toggle('slide')
+    })
+
+    $('#new-note-form').on('submit', function(e) {
+      e.preventDefault();
+      var $form = $(this);
+      var data = $form.serialize();
+      $.ajax({
+        url: "<%= notes_url %>",
+        type: 'POST',
+        data: data,
+        success: function(model) {
+          $('#new-note').before("<li><p><em>Now:</em></p><p>" + model.body + "</p></li>");
+          $('#note-body').empty();
+        },
+        error: function() {
+          console.log(arguments);
+        }
+      })
+
+    })
+  })
+</script>

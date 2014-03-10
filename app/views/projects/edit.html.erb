@@ -1,44 +1,46 @@
-<form action="<%= project_url(@project) %>" method="POST" accept-charset="utf-8">
-  <input
-  type="hidden"
-  name="authenticity_token"
-  value="<%= form_authenticity_token %>">
-
-  <input
+<h1 class="big">Edit Project:</h1>
+<div class="new-thing">
+  <form action="<%= project_url(@project) %>" method="POST" accept-charset="utf-8">
+    <input
     type="hidden"
-    name="_method"
-    value="PATCH">
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
 
-  <label>Client:
-    <select name="project[client_id]">
-      <option value="">~select client~</option>
-      <% current_user.clients.each do |client| %>
-      <option
-        value="<%= client.id %>"
-        <%= 'selected' if @project.client_id == client.id %>>
-        <%= client %>
-      </option>
-      <% end %>
-    </select>
-  </label>
+    <input
+      type="hidden"
+      name="_method"
+      value="PATCH">
 
-  <br>
-  <label>Name:
-    <input type="text" name="project[name]" value="<%= @project.name %>">
-  </label>
-  <br>
-  <label>Description:
-    <textarea name="project[description]"><%= @project.description %></textarea>
-  </label>
-  <br>
-  <!-- <label>Deliver by:
-    <input type="date" name="project[due_date]" value="">
-  </label>
-  <br> -->
+    <label>Client:
+      <select name="project[client_id]">
+        <option value="">~select client~</option>
+        <% current_user.clients.each do |client| %>
+        <option
+          value="<%= client.id %>"
+          <%= 'selected' if @project.client_id == client.id %>>
+          <%= client %>
+        </option>
+        <% end %>
+      </select>
+    </label>
 
-  <button class="btn">Update Project</button>
-</form>
+    <br>
+    <label>Name:
+      <input type="text" name="project[name]" value="<%= @project.name %>">
+    </label>
+    <br>
+    <label>Description:
+      <textarea name="project[description]"><%= @project.description %></textarea>
+    </label>
+    <br>
+    <!-- <label>Deliver by:
+      <input type="date" name="project[due_date]" value="">
+    </label>
+    <br> -->
 
+    <button class="btn">Update Project</button>
+  </form>
+</div>
 <br>
 
 <h3>OR</h3>

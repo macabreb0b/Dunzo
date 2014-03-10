@@ -1,0 +1,12 @@
+<div id="show-note">
+  <h2><%= @note.created_at.strftime("%x") %></h2>
+
+  <p><%= @note.body %></p>
+</div>
+
+<%= link_to 'Back to Project', project_url(@note.notable), class: 'subtle' %>
+
+<!-- add a link to deliverable if note belongs to deliverabl -->
+
+<%= link_to 'Edit Note', '#', class: 'subtle' %> (TK)
+<%= button_to 'Remove Note', note_url(@note), method: :delete, class: 'btn remove' %>

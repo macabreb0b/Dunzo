@@ -1,7 +1,7 @@
 <% disabled = deliverable.completed ? 'disabled' : nil %>
+<% greyed_out = (deliverable.completed ? 'greyed-out' : nil) %>
 
-
-<div>
+<div class="<%= greyed_out %>">
   <form action="<%= remove_hour_deliverable_url(deliverable) %>" method="POST">
     <input
       type="hidden"

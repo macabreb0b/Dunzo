@@ -1,0 +1,14 @@
+
+<!-- <div id="new-note-form"> -->
+  <form id="new-note-form" action="<%= notes_url %>" method="POST" accept-charset="utf-8">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="note[notable_id]" value="<%= notable_id %>">
+    <input type="hidden" name="note[notable_type]" value="<%= notable_type %>">
+
+    <label>Note:<br>
+      <textarea id="note-body" name="note[body]">Your note here...<%# note.body %></textarea>
+    </label><br>
+
+    <button id="add-project-note">Add Note</button>
+  </form>
+<!-- </div> -->

@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
+//= require jquery.serializeJSON
+
 //= require_tree .
 
 $(document).ready( function() {
@@ -21,4 +23,9 @@ $(document).ready( function() {
     var id = $(this).data('id');
     $('.sub-form.' + id ).toggle("slide");
   });
+
+  // $('.close').click(function(e) {
+  //   $('.notes input').each.toggle
+  //
+  // })
 });

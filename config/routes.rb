@@ -23,5 +23,7 @@ Projection::Application.routes.draw do
     end
   end
 
+  resources :notes, only: [:new, :create, :show, :destroy, :edit, :update]
+
   resource :session, only: [:new, :create, :destroy]
 end

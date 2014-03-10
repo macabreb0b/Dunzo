@@ -41,6 +41,7 @@ class DeliverablesController < ApplicationController
   def show
     @deliverable = Deliverable.find(params[:id])
     @project = @deliverable.project
+    @notes = @deliverable.notes
     render :show
   end
 
