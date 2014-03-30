@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    check_logged_in(@user)
+    check_logged_in(params[:id])
     render :show
   end
 

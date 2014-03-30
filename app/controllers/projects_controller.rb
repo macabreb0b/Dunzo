@@ -81,7 +81,8 @@ class ProjectsController < ApplicationController
 
   def check_logged_in_project
     project = Project.find(params[:id])
+    redirect_to :back if project.nil?
     user = project.user
-    check_logged_in(user)
+    check_logged_in(user.id)
   end
 end

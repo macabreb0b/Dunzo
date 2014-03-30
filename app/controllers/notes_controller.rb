@@ -37,8 +37,9 @@ class NotesController < ApplicationController
 
   def check_logged_in_note
     note = Note.find(params[:id])
+    redirect_to :back if note.nil?
     user = note.notable.class.to_s == "Project" ?
       note.notable.user : note.notable.project.user
-    check_logged_in(user)
+    check_logged_in(user.id)
   end
 end
