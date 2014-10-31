@@ -7,7 +7,7 @@ development:
   adapter: postgresql
   database: projection_dev
   host: localhost
-  user: appacademy
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -16,7 +16,7 @@ test:
   adapter: postgresql
   database: projection_test
   host: localhost
-  user: appacademy
+
 
 # production:
 #   adapter: sqlite3
